@@ -69,6 +69,14 @@ module.exports = function (grunt) {
 
     // The actual grunt server settings
     connect: {
+       proxies: [
+       {
+         context: '/app', // the context of the data service
+         host: 'localhost', // wherever the data service is running
+         port: 9090, // the port that the data service is running on
+         changeOrigin: true
+       }
+      ],
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
@@ -80,6 +88,9 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
+              // Setup the proxy
+              connect.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
+
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -437,6 +448,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);
