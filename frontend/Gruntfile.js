@@ -25,6 +25,9 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  //Proxy plugin enabled
+  grunt.loadNpmTasks('grunt-connect-proxy');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -69,7 +72,7 @@ module.exports = function (grunt) {
 
     // The actual grunt server settings
     connect: {
-       proxies: [
+      proxies: [
        {
          context: '/app', // the context of the data service
          host: 'localhost', // wherever the data service is running
@@ -89,8 +92,7 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               // Setup the proxy
-              connect.push(require('grunt-connect-proxy/lib/utils').proxyRequest);
-
+              require('grunt-connect-proxy/lib/utils').proxyRequest,
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
