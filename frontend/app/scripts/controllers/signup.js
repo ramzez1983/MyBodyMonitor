@@ -14,9 +14,8 @@ angular.module('frontendApp')
          email : $scope.email,
          password : $scope.password
        };
-
-       $http.post('app/signup', payload)
-           .success(function(data) {
+       $log.debug(payload);
+       $http.post('app/signup', payload, function(data) {
              $log.debug(data);
            });
      };

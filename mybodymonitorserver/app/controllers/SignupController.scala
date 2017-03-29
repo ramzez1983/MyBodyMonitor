@@ -10,7 +10,7 @@ import play.api.mvc.{Action, Controller}
 @Singleton
 class SignupController @Inject() extends Controller {
 
-  def signup = Action{ implicit request =>
+  def signup = Action { implicit request =>
     Ok("Success!")
   }
 }
