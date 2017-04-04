@@ -7,12 +7,15 @@ import { HeroDetailComponent }  from './hero-detail.component';
 
 import { HistogramComponent }  from './histogram.component';
 
+import { ExampleComponent }   from './example.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'heroes',     component: HeroesComponent },
   { path: 'hist',       component: HistogramComponent },
+  { path: 'example',    component: ExampleComponent },
 ];
 
 @NgModule({

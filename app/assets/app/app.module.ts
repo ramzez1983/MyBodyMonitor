@@ -15,6 +15,8 @@ import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
 import { HistogramComponent }   from './histogram.component';
 
+import { ExampleComponent }   from './example.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { HistogramComponent }   from './histogram.component';
     HeroesComponent,
     HeroSearchComponent,
     HistogramComponent,
+    ExampleComponent,
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ],
