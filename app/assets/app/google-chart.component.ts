@@ -1,39 +1,35 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 declare var google: any;
-declare var googleLoaded: any;
-@Directive({
-  selector: '[GoogleChart]',
+@Component({
+  selector: 'chart',
 })
 export class GoogleChartComponent implements OnInit {
-  public nativeElement: any;
-  @Input('chartType') public chartType: string;
-  @Input('chartOptions') public chartOptions: Object;
-  @Input('chartData') public chartData: Object;
-  constructor(public element: ElementRef) {
-    this.nativeElement = this.element.nativeElement;
+  private static googleLoaded: any;
+
+  public constructor() {
+      return;
+  }
+
+  public getGoogle() {
+      return google;
   }
   public ngOnInit() {
-    setTimeout(
-      () => {
-        google.charts.load('current', {packages: ['corechart']});
-        setTimeout(
-          () => {
-            this.drawGraph(this.chartOptions, this.chartType, this.chartData, this.nativeElement);
-          },
-          1000);
-      },
-      1000);
-  }
-  public drawGraph (chartOptions: any, chartType: any, chartData: any, ele: any) {
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      let wrapper = new google.visualization.ChartWrapper({
-        chartType: chartType,
-        dataTable: chartData,
-        options: chartOptions || {},
-        containerId: ele.id,
-      });
-      wrapper.draw();
+    if (!GoogleChartComponent.googleLoaded) {
+      GoogleChartComponent.googleLoaded = true;
+      google.charts.load('current',  {packages: ['corechart', 'bar']});
     }
+    google.charts.setOnLoadCallback(() => this.drawGraph());
+  }
+
+  public drawGraph() {
+      return;
+  }
+
+  public createBarChart(element: any): any {
+      return new google.visualization.BarChart(element);
+  }
+
+  public createDataTable(array: any[]): any {
+      return google.visualization.arrayToDataTable(array);
   }
 }

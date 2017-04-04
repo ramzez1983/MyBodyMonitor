@@ -2,28 +2,39 @@ import {Component, OnInit } from '@angular/core';
 import {GoogleChartComponent} from './google-chart.component';
 
 @Component({
-  templateUrl: './example.component.html',
+  selector: 'evolution',
+  template: `
+    <div class="four wide column center aligned">
+        <div id="chart_divEvolution" style="width: 900px; height: 500px;"></div>
+    </div>
+  `,
 })
-export class ExampleComponent implements OnInit {
+export class ExampleComponent extends GoogleChartComponent {
+  private options: any;
+  private data: any;
+  private chart: any;
 
-  public pieChartData = [
-    ['Task', 'Hours per Day'],
-    ['Work',     11],
-    ['Eat',      2],
-    ['Commute',  2],
-    ['Watch TV', 2],
-    ['Sleep',    7] ];
-  public pieChartOptions  = {
-    title: 'My Daily Activities',
-    width: 900,
-    height: 500,
-  };
+  public drawGraph() {
+    this.data = this.createDataTable([
+      ['Evolution', 'Imports', 'Exports'],
+      ['A', 8695000, 6422800],
+      ['B', 3792000, 3694000],
+      ['C', 8175000, 800800],
+    ]);
 
-  public constructor() {
-    return undefined;
-  }
+    this.options = {
+      title: 'Evolution, 2014',
+      chartArea: {width: '50%'},
+      hAxis: {
+        title: 'Value in USD',
+        minValue: 0,
+      },
+      vAxis: {
+        title: 'Members',
+      },
+    };
 
-  public ngOnInit(): any {
-    return undefined;
+    this.chart = this.createBarChart(document.getElementById('chart_divEvolution'));
+    this.chart.draw(this.data, this.options);
   }
 }
