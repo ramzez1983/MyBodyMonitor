@@ -13,6 +13,7 @@ import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
+import { HistogramComponent }   from './histogram.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { HeroSearchComponent }  from './hero-search.component';
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
+    HistogramComponent,
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ],
