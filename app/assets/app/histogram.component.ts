@@ -32,7 +32,7 @@ export class HistogramComponent implements OnInit {
   }
 
   public getStats(): void {
-      this.weightHist = this.statsService.getStats();
+      this.statsService.getStats().then(stats => this.weightHist = stats);
     }
 
   public onSelect(weight: Histogram): void {
