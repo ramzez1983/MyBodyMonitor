@@ -1,0 +1,7 @@
+<div *ngIf="bodyStats">
+  <div><label>date: </label>{{bodyStats.dateLabel}}</div>
+  <div>
+    <label>weight: </label>
+    <input [(ngModel)]="bodyStats.value" placeholder="weight"/>
+  </div>
+</div>

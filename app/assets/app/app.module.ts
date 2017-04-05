@@ -14,6 +14,7 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
 import { HistogramComponent }   from './histogram.component';
+import { StatsDetailsComponent }  from './stats-details.component';
 
 import { ExampleComponent }   from './example.component';
 
@@ -31,6 +32,7 @@ import { ExampleComponent }   from './example.component';
     HeroesComponent,
     HeroSearchComponent,
     HistogramComponent,
+    StatsDetailsComponent,
     ExampleComponent,
   ],
   providers: [ HeroService ],

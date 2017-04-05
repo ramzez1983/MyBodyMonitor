@@ -1,5 +1,5 @@
-import { Component }          from '@angular/core';
-import { Histogram }          from './histogram';
+import { Component }              from '@angular/core';
+import { Histogram }              from './histogram';
 
 const WEIGHTS: Histogram[] = [
   new Histogram(new Date('2016-02-04T00:00:00'), 55.1 ),
@@ -15,13 +15,7 @@ const WEIGHTS: Histogram[] = [
   styleUrls: [ 'assets/app/heroes.component.css' ],
   template: `
     <h1>{{title}}</h1>
-    <div *ngIf="selectedWeight">
-      <div><label>date: </label>{{selectedWeight.dateLabel}}</div>
-      <div>
-          <label>weight: </label>
-          <input [(ngModel)]="selectedWeight.value" placeholder="weight"/>
-      </div>
-    </div>
+    <stats-details [bodyStats] = "selectedWeight"></stats-details>
     <h2>Weight Histogram</h2>
     <ul class="heroes">
       <li *ngFor="let weight of weightHist"
