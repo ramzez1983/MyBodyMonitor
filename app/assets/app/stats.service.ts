@@ -15,4 +15,8 @@ export class StatsService {
     });
   }
 
+  public getDetailedStats(id: number): Promise<Histogram> {
+    return this.getStats()
+               .then(stats => stats.find(stat => stat.id === id));
+  }
 }

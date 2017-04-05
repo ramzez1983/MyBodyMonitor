@@ -13,8 +13,11 @@ import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
+
 import { HistogramComponent }   from './histogram.component';
+
 import { StatsDetailsComponent }  from './stats-details.component';
+import { StatsService }           from './stats.service';
 
 import { ExampleComponent }   from './example.component';
 
@@ -35,7 +38,10 @@ import { ExampleComponent }   from './example.component';
     StatsDetailsComponent,
     ExampleComponent,
   ],
-  providers: [ HeroService ],
+  providers: [
+    HeroService,
+    StatsService,
+  ],
   bootstrap: [ AppComponent ],
 })
 export class AppModule { }
