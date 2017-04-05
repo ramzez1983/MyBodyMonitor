@@ -29,6 +29,10 @@ export class GoogleChartComponent implements OnInit {
       return new google.visualization.BarChart(element);
   }
 
+  public createLineChart(element: any): any {
+      return new google.visualization.LineChart(element);
+  }
+
   public createDataTable(array: any[]): any {
       return google.visualization.arrayToDataTable(array);
   }
