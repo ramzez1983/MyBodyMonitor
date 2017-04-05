@@ -14,7 +14,7 @@ import { StatsService }           from './stats.service';
       <li *ngFor="let weight of weightHist"
         [class.selected]="weight === selectedWeight"
         (click)="onSelect(weight)">
-       <span class="badge">{{weight.dateLabel}}</span>
+       <span class="badge">{{weight.date | date:format}}</span>
        <span>{{weight.value}}</span>
        <button class="delete" (click)="gotoDetail(weight.id)">Edit</button>
       </li>
@@ -29,6 +29,11 @@ export class HistogramComponent implements OnInit {
   constructor(
     private statsService: StatsService,
     private router: Router) { }
+
+  get format() {
+    /*TODO date format to be read from user profile*/
+    return  'dd-MM-yyyy';
+  }
 
   public ngOnInit(): void {
     this.getStats();

@@ -1,6 +1,7 @@
 <div *ngIf="bodyStats">
   <div>
-    <label>date: </label>{{bodyStats.dateLabel}}
+    <label>id: </label>{{bodyStats.id}}
+    <label>date: </label>{{bodyStats.date | date:format}}
   </div>
   <div>
     <label>weight: </label>

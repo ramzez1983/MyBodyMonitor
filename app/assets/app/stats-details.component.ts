@@ -18,6 +18,11 @@ export class StatsDetailsComponent implements OnInit {
     private location: Location,
   ) {}
 
+  get format() {
+    /*TODO date format to be read from user profile*/
+    return  'dd-MM-yyyy';
+  }
+
   public ngOnInit(): void {
     this.route.params // tslint:disable-next-line:no-string-literal
       .switchMap((params: Params) => this.statsService.getDetailedStats(+params['id']))
