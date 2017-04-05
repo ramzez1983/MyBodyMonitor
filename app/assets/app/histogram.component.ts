@@ -1,18 +1,11 @@
-import { Component }              from '@angular/core';
+import { Component, OnInit }      from '@angular/core';
 import { Histogram }              from './histogram';
-
-const WEIGHTS: Histogram[] = [
-  new Histogram(new Date('2016-02-04T00:00:00'), 55.1 ),
-  new Histogram(new Date('February 5, 2016 10:13:00'), 55.3 ),
-  new Histogram(new Date('February 6, 2016 10:13:00'), 55.5 ),
-  new Histogram(new Date('February 7, 2016 10:13:00'), 55.6 ),
-  new Histogram(new Date('February 8, 2016 10:13:00'), 55.6 ),
-  new Histogram(new Date('February 9, 2016 10:13:00'), 55.9 ),
-];
+import { StatsService }           from './stats.service';
 
 @Component({
   selector: 'my-weight',
   styleUrls: [ 'assets/app/heroes.component.css' ],
+  providers: [ StatsService ],
   template: `
     <h1>{{title}}</h1>
     <stats-details [bodyStats] = "selectedWeight"></stats-details>
@@ -26,10 +19,21 @@ const WEIGHTS: Histogram[] = [
     </ul>
   `,
 })
-export class HistogramComponent {
+export class HistogramComponent implements OnInit {
   public title = 'Testowy tytuł';
   public selectedWeight: Histogram;
-  public weightHist = WEIGHTS;
+  public weightHist: Histogram[];
+
+  constructor(
+    private statsService: StatsService) { }
+
+  public ngOnInit(): void {
+    this.getStats();
+  }
+
+  public getStats(): void {
+      this.weightHist = this.statsService.getStats();
+    }
 
   public onSelect(weight: Histogram): void {
     this.selectedWeight = weight;
