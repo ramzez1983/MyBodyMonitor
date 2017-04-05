@@ -23,6 +23,7 @@ export class ExampleComponent extends GoogleChartComponent {
       [new Date('2016-02-07T00:00:00'), 61, 54],
       [new Date('2016-02-09T00:00:00'), 51, 52],
       [new Date('2016-02-10T00:00:00'), 55, 55],
+      [new Date('2016-02-10T12:00:00'), 56, 56],
       [new Date('2016-02-11T00:00:00'), 52, 62],
       [new Date('2016-02-12T00:00:00'), 52, null],
       [new Date('2016-02-13T00:00:00'), null, 57],
@@ -36,7 +37,7 @@ export class ExampleComponent extends GoogleChartComponent {
     this.options = {
       title: 'Evolution, 2014',
       legend: { position: 'bottom' },
-      chartArea: {width: '50%'},
+      chartArea: {width: '80%'},
       vAxis: {
         title: 'Value in USD',
       },

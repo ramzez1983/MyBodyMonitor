@@ -11,12 +11,22 @@ const WEIGHTS: Histogram[] = [
 ];
 
 @Component({
+  selector: 'my-weight',
   styleUrls: [ 'assets/app/heroes.component.css' ],
   template: `
-    <h1>{{title}}</h1><h2>{{hero}} details!</h2>
+    <h1>{{title}}</h1>
+    <div *ngIf="selectedWeight">
+      <div><label>date: </label>{{selectedWeight.dateLabel}}</div>
+      <div>
+          <label>weight: </label>
+          <input [(ngModel)]="selectedWeight.value" placeholder="weight"/>
+      </div>
+    </div>
     <h2>Weight Histogram</h2>
     <ul class="heroes">
-      <li *ngFor="let weight of weightHist">
+      <li *ngFor="let weight of weightHist"
+        [class.selected]="weight === selectedWeight"
+        (click)="onSelect(weight)">
        <span class="badge">{{weight.dateLabel}}</span> {{weight.value}}
       </li>
     </ul>
@@ -24,6 +34,10 @@ const WEIGHTS: Histogram[] = [
 })
 export class HistogramComponent {
   public title = 'Testowy tytuł';
-  public hero = 'Testowy user';
+  public selectedWeight: Histogram;
   public weightHist = WEIGHTS;
+
+  public onSelect(weight: Histogram): void {
+    this.selectedWeight = weight;
+  }
 }
