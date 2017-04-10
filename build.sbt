@@ -54,3 +54,9 @@ resolveFromWebjarsNodeModulesDir := true
 
 logLevel in tslint := Level.Debug
 routesGenerator := InjectedRoutesGenerator
+
+resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+
+libraryDependencies ++= Seq(
+  "org.reactivemongo" %% "play2-reactivemongo" % "0.11.12"
+)
