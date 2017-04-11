@@ -4,25 +4,18 @@ import javax.inject.{Inject, Singleton}
 
 import org.joda.time.DateTime
 import play.api.libs.json.Json
-import play.api.mvc.{Action, Controller}
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
 import reactivemongo.api.ReadPreference
 import reactivemongo.play.json.collection.JSONCollection
 import reactivemongo.play.json._
-import play.modules.reactivemongo.json.collection._
-
+import reactivemongo.bson.BSONObjectID
 
 import scala.concurrent.{ExecutionContext, Future}
 
-trait User {
-  def id: Int
-  def email: String
-}
+case class UserBody(_id: Option[BSONObjectID], email: String, height: Int, male: Boolean, birthDate: DateTime, stats: List[BSONObjectID] )
 
-case class Body(id: Int, email: String, height: Int, male: Boolean, birthDate: DateTime ) extends User
-
-object Body{
-  implicit val format = Json.format[Body]
+object UserBody{
+  implicit val format = Json.format[UserBody]
 }
 /**
   * Created by lukasz.wolanski on 07.04.2017.
@@ -32,7 +25,7 @@ class UsersService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit ex
 
   def bodiesFuture: Future[JSONCollection] = database.map(_.collection[JSONCollection]("user"))
   /**stub value until db added*/
-  private val body = Body(1, "test@test.com", 179, true, new DateTime(1980, 1, 1, 0, 0))
+  private val body = UserBody(Option.empty, "test@test.com", 179, true, new DateTime(1980, 1, 1, 0, 0), List.empty)
 
   //TODO: temporary to see if insert works
   def create() = {
@@ -49,11 +42,11 @@ class UsersService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit ex
       // find all cities with name `name`
       _.find(Json.obj("email" -> email)).
         // perform the query and get a cursor of JsObject
-        cursor[Body](ReadPreference.primary).
-        // Coollect the results as a list
+        cursor[UserBody](ReadPreference.primary).
+        // Collect the results as a list
         collect[List]()
     }
   }
 
-  def updateBody(body: Body) = ???
+  def updateBody(body: UserBody) = ???
 }

@@ -15,11 +15,11 @@ import scala.concurrent.Future
 class Users  @Inject()(userService: UsersService) extends Controller {
 
   def create() = Action.async {
-    userService.create().map { _ => Ok("") }
+    userService.create().map { _ => Created("") }
   }
 
-  def findByEmail() = Action.async {
-      userService.findByEmail("test@test.com").map { user =>
+  def findByEmail(email: String) = Action.async {
+      userService.findByEmail(email).map { user =>
           Ok(Json.toJson(user))
         }
   }
