@@ -19,8 +19,6 @@ import { HistogramComponent }   from './histogram.component';
 import { StatsDetailsComponent }  from './stats-details.component';
 import { StatsService }           from './stats.service';
 
-import { ExampleComponent }   from './example.component';
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -36,7 +34,6 @@ import { ExampleComponent }   from './example.component';
     HeroSearchComponent,
     HistogramComponent,
     StatsDetailsComponent,
-    ExampleComponent,
   ],
   providers: [
     HeroService,
