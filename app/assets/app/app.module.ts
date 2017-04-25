@@ -19,6 +19,8 @@ import { HistogramComponent }   from './histogram.component';
 import { StatsDetailsComponent }  from './stats-details.component';
 import { StatsService }           from './stats.service';
 
+import { BodyChartComponent }     from './bodyChart.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { StatsService }           from './stats.service';
     HeroSearchComponent,
     HistogramComponent,
     StatsDetailsComponent,
+    BodyChartComponent,
   ],
   providers: [
     HeroService,

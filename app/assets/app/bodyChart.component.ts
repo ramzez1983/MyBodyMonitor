@@ -35,7 +35,7 @@ export class BodyChartComponent extends GoogleChartComponent {
       interpolateNulls: true,
     };
 
-    this.chart = this.createLineChart(document.getElementById('chart_divEvolution'));
+    this.chart = this.createLineChart(document.getElementById('bodychart_div'));
     this.chart.draw(this.data, this.options);
   }
 }

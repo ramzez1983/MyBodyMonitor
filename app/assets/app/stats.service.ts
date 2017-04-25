@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Histogram }  from './histogram';
-import { WEIGHTS }    from './mock-stats';
+import { BodyStats }  from './bodyStats';
+import { WEIGHTS, BODYSTATS }    from './mock-stats';
 
 @Injectable()
 export class StatsService {
   public getStats(): Promise<Histogram[]> {
     return Promise.resolve(WEIGHTS);
+  }
+
+  public getBodyStats(): Promise<BodyStats[]> {
+    return Promise.resolve(BODYSTATS);
   }
 
   public getHeroesSlowly(): Promise<Histogram[]> {

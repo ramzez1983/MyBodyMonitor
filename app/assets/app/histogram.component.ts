@@ -2,6 +2,7 @@ import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
 import { Histogram }              from './histogram';
 import { StatsService }           from './stats.service';
+import { BodyStats }              from './bodyStats';
 
 @Component({
   selector: 'my-weight',
@@ -9,6 +10,7 @@ import { StatsService }           from './stats.service';
   providers: [ StatsService ],
   template: `
     <h1>{{title}}</h1>
+    <bodychart [series]="series" [stats]="stats"></bodychart>
     <h2>Weight Histogram</h2>
     <ul class="heroes">
       <li *ngFor="let weight of weightHist"
@@ -26,6 +28,9 @@ export class HistogramComponent implements OnInit {
   public selectedWeight: Histogram;
   public weightHist: Histogram[];
 
+  private series: any[];
+  private stats: BodyStats[];
+
   constructor(
     private statsService: StatsService,
     private router: Router) { }
@@ -41,6 +46,8 @@ export class HistogramComponent implements OnInit {
 
   public getStats(): void {
       this.statsService.getStats().then(stats => this.weightHist = stats);
+      this.statsService.getBodyStats().then(stats => this.stats = stats);
+      this.series = ['date', 'weight', 'fatPercent', 'bonesPercent'];
     }
 
   public onSelect(weight: Histogram): void {
