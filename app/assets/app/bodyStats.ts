@@ -1,10 +1,15 @@
-expot class BodyStats {
-  public id: any;
+export class BodyStats {
+  public id: number;
   public date: Date;
-  public weight: Number;
-  public fatPercent: Number;
-  public waterPercent: Number;
-  public musclePercent: Number;
-  public bonesPercent: Number;
-  public calories: Number;
+  public weight: number;
+  public fatPercent: number;
+  public waterPercent: number;
+  public musclePercent: number;
+  public bonesPercent: number;
+  public calories: number;
+  [key: string]: number|Date;
+
+  public getSeries(series: string[]): any[] {
+    return series.map((s: string) => this[s]);
+  }
 }
