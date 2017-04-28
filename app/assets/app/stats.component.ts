@@ -1,6 +1,5 @@
 import { Component, OnInit }      from '@angular/core';
 import { Router }                 from '@angular/router';
-import { Histogram }              from './histogram';
 import { StatsService }           from './stats.service';
 import { BodyStats }              from './bodyStats';
 
@@ -8,24 +7,9 @@ import { BodyStats }              from './bodyStats';
   selector: 'my-weight',
   styleUrls: [ 'assets/app/heroes.component.css' ],
   providers: [ StatsService ],
-  template: `
-    <h1>{{title}}</h1>
-    <bodychart [series]="series" [stats]="stats"></bodychart>
-    <h2>Weight Histogram</h2>
-    <ul class="heroes">
-      <li *ngFor="let statRow of stats"
-        [class.selected]="statRow === selectedStatRow"
-        (click)="onSelect(statRow)">
-       <span class="badge">{{statRow.date | date:format}}</span>
-       <span class="cellodd">{{statRow.weight}}</span>
-       <span class="celleven">{{statRow.fatPercent}}</span>
-       <span class="cellodd">{{statRow.calories}}</span>
-       <button class="delete" (click)="gotoDetail(statRow.id)">Edit</button>
-      </li>
-    </ul>
-  `,
+  templateUrl: 'assets/app/stats.component.html',
 })
-export class HistogramComponent implements OnInit {
+export class StatsComponent implements OnInit {
   /* currently unused */
   public selectedStatRow: BodyStats;
   private series: string[];

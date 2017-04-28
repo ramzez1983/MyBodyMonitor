@@ -5,7 +5,7 @@ import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 
-import { HistogramComponent }     from './histogram.component';
+import { StatsComponent }         from './stats.component';
 import { StatsDetailsComponent }  from './stats-details.component';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'dashboard',    component: DashboardComponent },
   { path: 'detail/:id',   component: HeroDetailComponent },
   { path: 'heroes',       component: HeroesComponent },
-  { path: 'hist',         component: HistogramComponent },
+  { path: 'stats',        component: StatsComponent },
   { path: 'stats/:id',    component: StatsDetailsComponent },
 ];
 
