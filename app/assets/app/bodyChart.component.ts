@@ -19,7 +19,7 @@ export class BodyChartComponent extends GoogleChartComponent {
   private chart: any;
 
   public drawGraph() {
-    let rows = this.stats.map((s: BodyStats) => s.getSeries(this.series));
+    let rows = this.stats.map((s: BodyStats) => s.getDataForSeries(this.series));
     this.data = this.createDataTable([this.series].concat(rows));
 
     this.options = {

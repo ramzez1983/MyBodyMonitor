@@ -13,22 +13,22 @@ import { BodyStats }              from './bodyStats';
     <bodychart [series]="series" [stats]="stats"></bodychart>
     <h2>Weight Histogram</h2>
     <ul class="heroes">
-      <li *ngFor="let weight of weightHist"
-        [class.selected]="weight === selectedWeight"
-        (click)="onSelect(weight)">
-       <span class="badge">{{weight.date | date:format}}</span>
-       <span>{{weight.value}}</span>
-       <button class="delete" (click)="gotoDetail(weight.id)">Edit</button>
+      <li *ngFor="let statRow of stats"
+        [class.selected]="statRow === selectedStatRow"
+        (click)="onSelect(statRow)">
+       <span class="badge">{{statRow.date | date:format}}</span>
+       <span class="cellodd">{{statRow.weight}}</span>
+       <span class="celleven">{{statRow.fatPercent}}</span>
+       <span class="cellodd">{{statRow.calories}}</span>
+       <button class="delete" (click)="gotoDetail(statRow.id)">Edit</button>
       </li>
     </ul>
   `,
 })
 export class HistogramComponent implements OnInit {
   /* currently unused */
-  public selectedWeight: Histogram;
-  public weightHist: Histogram[];
-
-  private series: any[];
+  public selectedStatRow: BodyStats;
+  private series: string[];
   private stats: BodyStats[];
 
   constructor(
@@ -45,13 +45,12 @@ export class HistogramComponent implements OnInit {
   }
 
   public getStats(): void {
-      this.statsService.getStats().then(stats => this.weightHist = stats);
       this.statsService.getBodyStats().then(stats => this.stats = stats);
       this.series = ['date', 'weight', 'fatPercent', 'bonesPercent'];
     }
 
-  public onSelect(weight: Histogram): void {
-    this.selectedWeight = weight;
+  public onSelect(statRow: BodyStats): void {
+    this.selectedStatRow = statRow;
   }
 
   public gotoDetail(id: number): void {

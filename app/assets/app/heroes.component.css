@@ -6,7 +6,7 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 19em;
 }
 .heroes li {
   cursor: pointer;
@@ -42,8 +42,37 @@
   left: -1px;
   top: -4px;
   height: 1.8em;
-  margin-right: .8em;
+  margin-right: .1em;
   border-radius: 4px 0 0 4px;
+}
+.heroes .cellodd {
+  display: inline-block;
+  font-size: small;
+  text-align: center;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  top: -5px;
+  height: 1.8em;
+  width: 1.8em;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+}
+.heroes .celleven {
+  background-color: #CCC;
+  display: inline-block;
+  font-size: small;
+  text-align: center;
+  padding: 0.8em 0.7em 0 0.7em;
+  line-height: 1em;
+  position: relative;
+  top: -5px;
+  height: 1.8em;
+  width: 1.8em;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
 }
 button {
   font-family: Arial;
@@ -59,8 +88,7 @@ button:hover {
 }
 button.delete {
   float:right;
-  margin-top: 2px;
-  margin-right: .8em;
+  margin-right: .6em;
   background-color: gray !important;
   color:white;
 }

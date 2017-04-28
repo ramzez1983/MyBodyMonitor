@@ -1,7 +1,7 @@
 export class BodyStats {
   public id: number;
   public date: Date;
-  // przerobic na mape charakterystyk
+  // TODO przerobic na mape charakterystyk?
   public weight: number;
   public fatPercent: number;
   public waterPercent: number;
@@ -28,7 +28,7 @@ export class BodyStats {
     this.calories = calories;
   }
 
-  public getSeries(series: string[]): any[] {
+  public getDataForSeries(series: string[]): any[] {
     return series.map((s: string) => this[s]);
   }
 }
