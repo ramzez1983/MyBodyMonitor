@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import 'rxjs/add/operator/switchMap';
-import { Histogram }                from './histogram';
+import { BodyStats }                from './bodyStats';
 import { StatsService }             from './stats.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { StatsService }             from './stats.service';
   templateUrl:  'assets/app/stats-details.component.html',
 })
 export class StatsDetailsComponent implements OnInit {
-  public bodyStats: Histogram;
+  public bodyStats: BodyStats;
 
   constructor(
     private statsService: StatsService,

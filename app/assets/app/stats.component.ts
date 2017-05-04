@@ -12,8 +12,8 @@ import { BodyStats }              from './bodyStats';
 export class StatsComponent implements OnInit {
   /* currently unused */
   public selectedStatRow: BodyStats;
-  private series: string[];
-  private stats: BodyStats[];
+  public series: string[];
+  public stats: BodyStats[];
 
   constructor(
     private statsService: StatsService,
