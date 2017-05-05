@@ -19,23 +19,25 @@ export class BodyChartComponent extends GoogleChartComponent {
   private chart: any;
 
   public drawGraph() {
-    let rows = this.stats.map((s: BodyStats) => s.getDataForSeries(this.series));
-    this.data = this.createDataTable([this.series].concat(rows));
+    if (this.stats && this.series) {
+      let rows = this.stats.map((s: BodyStats) => s.getDataForSeries(this.series));
+      this.data = this.createDataTable([this.series].concat(rows));
 
-    this.options = {
-      title: 'My body stats',
-      legend: { position: 'bottom' },
-      chartArea: {width: '80%'},
-      vAxis: {
-        title: 'Value',
-      },
-      hAxis: {
-        title: 'Days',
-      },
-      interpolateNulls: true,
-    };
+      this.options = {
+        title: 'My body stats',
+        legend: { position: 'bottom' },
+        chartArea: {width: '80%'},
+        vAxis: {
+          title: 'Value',
+        },
+        hAxis: {
+          title: 'Days',
+        },
+        interpolateNulls: true,
+      };
 
-    this.chart = this.createLineChart(document.getElementById('bodychart_div'));
-    this.chart.draw(this.data, this.options);
+      this.chart = this.createLineChart(document.getElementById('bodychart_div'));
+      this.chart.draw(this.data, this.options);
+    }
   }
 }
