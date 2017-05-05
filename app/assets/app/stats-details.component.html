@@ -1,4 +1,29 @@
 <div *ngIf="bodyStats">
+  <h2>Body Details</h2>
+  <h3><i>FormControl in a FormGroup</i></h3>
+  <form [formGroup]="bodyForm" (ngSubmit)="onSubmit()" novalidate>
+    <div style="margin-bottom: 1em">
+      <button type="submit"
+              [disabled]="bodyForm.pristine" class="btn btn-success">Save</button>
+      <button type="reset" (click)="revert()"
+              [disabled]="bodyForm.pristine" class="btn btn-danger">Revert</button>
+    </div>
+
+    <!-- BodyStats Detail Controls -->
+    <div class="form-group">
+      <label class="center-block">Weight:
+        <input class="form-control" formControlName="weight">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Calories:
+        <input class="form-control" formControlName="calories">
+      </label>
+    </div>
+  </form>
+  <p>Form value: {{ bodyForm.value | json }}</p>
+  <p>Form status: {{ bodyForm.status | json }}</p>
+
   <div>
     <label>id: </label>{{bodyStats.id}}
     <label>date: </label>{{bodyStats.date | date:format}}
