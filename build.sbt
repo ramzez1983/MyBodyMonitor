@@ -31,7 +31,7 @@ libraryDependencies ++= {
     "org.webjars.npm" % "symbol-observable" % "1.0.1",
     "org.webjars.npm" % "ng2-validation" % "1.4.1",
 
-    "org.webjars.npm" % "typescript" % "2.2.1",
+    "org.webjars.npm" % "typescript" % "2.3.1",
 
     //tslint dependency
     "org.webjars.npm" % "tslint-eslint-rules" % "3.4.0",
