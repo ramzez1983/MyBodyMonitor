@@ -29,6 +29,7 @@ libraryDependencies ++= {
     "org.webjars.npm" % "zone.js" % "0.6.26",
     "org.webjars.npm" % "core-js" % "2.4.1",
     "org.webjars.npm" % "symbol-observable" % "1.0.1",
+    "org.webjars.npm" % "ng2-validation" % "1.4.1",
 
     "org.webjars.npm" % "typescript" % "2.2.1",
 

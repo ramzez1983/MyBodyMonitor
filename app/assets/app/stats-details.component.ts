@@ -5,6 +5,7 @@ import { Location }                             from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 import { BodyStats }                            from './bodyStats';
 import { StatsService }                         from './stats.service';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   selector:     'stats-details',
@@ -54,15 +55,17 @@ export class StatsDetailsComponent implements OnInit {
 
   private createForm() {
     this.bodyForm = this.fb.group({
-      weight:   ['', Validators.required ],
-      calories: ['', Validators.required ],
+      weight:     ['', Validators.required ],
+      fatPercent: ['', CustomValidators.range([5, 9]) ],
+      calories:   ['', Validators.required ],
     });
   }
 
   private resetForm(stats: BodyStats) {
     this.bodyForm.reset({
-          weight:   stats.weight,
-          calories: stats.calories,
+          weight:     stats.weight,
+          fatPercent: stats.fatPercent,
+          calories:   stats.calories,
         });
   }
 

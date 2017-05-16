@@ -7,6 +7,8 @@ import { HttpModule }    from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { CustomValidators } from 'ng2-validation';
+
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
@@ -26,6 +28,7 @@ import { BodyChartComponent }     from './bodyChart.component';
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
+    CustomValidators,
   ],
   declarations: [
     AppComponent,

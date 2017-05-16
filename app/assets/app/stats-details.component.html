@@ -4,7 +4,7 @@
   <form [formGroup]="bodyForm" (ngSubmit)="onSubmit()" novalidate>
     <div style="margin-bottom: 1em">
       <button type="submit"
-              [disabled]="bodyForm.pristine" class="btn btn-success">Save</button>
+              [disabled]="bodyForm.pristine || bodyForm.invalid" class="btn btn-success">Save</button>
       <button type="reset" (click)="revert()"
               [disabled]="bodyForm.pristine" class="btn btn-danger">Revert</button>
     </div>
@@ -13,6 +13,11 @@
     <div class="form-group">
       <label class="center-block">Weight:
         <input class="form-control" formControlName="weight">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Fat%:
+        <input class="form-control" formControlName="fatPercent">
       </label>
     </div>
     <div class="form-group">
