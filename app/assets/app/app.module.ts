@@ -18,6 +18,7 @@ import { StatsComponent } from './stats.component';
 import { StatsDetailsComponent } from './stats-details.component';
 import { StatsService } from './stats.service';
 import { BodyChartComponent } from './bodyChart.component';
+import { DateValueAccessor } from './date-value-accessor';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { BodyChartComponent } from './bodyChart.component';
     StatsComponent,
     StatsDetailsComponent,
     BodyChartComponent,
+    DateValueAccessor,
   ],
   providers: [
     HeroService,

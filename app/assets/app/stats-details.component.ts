@@ -55,22 +55,40 @@ export class StatsDetailsComponent implements OnInit {
 
   private createForm() {
     this.bodyForm = this.fb.group({
-      weight:     ['', Validators.required ],
-      fatPercent: ['', CustomValidators.range([0, 100]) ],
-      calories:   ['', Validators.required ],
+      date:          ['', [Validators.required, CustomValidators.date] ],
+      weight:        ['', [Validators.required, CustomValidators.range([20, 200])] ],
+      fatPercent:    ['', [Validators.required, CustomValidators.range([0, 100])] ],
+      waterPercent:  ['', [Validators.required, CustomValidators.range([0, 100])] ],
+      musclePercent: ['', [Validators.required, CustomValidators.range([0, 100])] ],
+      bonesPercent:  ['', [Validators.required, CustomValidators.range([0, 100])] ],
+      calories:      ['', Validators.required ],
     });
   }
 
   private resetForm(stats: BodyStats) {
     this.bodyForm.reset({
-          weight:     stats.weight,
-          fatPercent: stats.fatPercent,
-          calories:   stats.calories,
+          date:          stats.date,
+          weight:        stats.weight,
+          fatPercent:    stats.fatPercent,
+          waterPercent:  stats.waterPercent,
+          musclePercent: stats.musclePercent,
+          bonesPercent:  stats.bonesPercent,
+          calories:      stats.calories,
         });
   }
 
   private prepareSaveBody(): BodyStats {
-  // TODO copy values from FormControl to model
-    return this.bodyStats;
+    const formModel = this.bodyForm.value;
+    const saveBody = new BodyStats(
+      this.bodyStats.id,
+      new Date(formModel.date),
+      formModel.weight,
+      formModel.fatPercent,
+      formModel.waterPercent,
+      formModel.musclePercent,
+      formModel.bonesPercent,
+      formModel.calories,
+    );
+    return saveBody;
   }
 }

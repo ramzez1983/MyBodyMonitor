@@ -11,44 +11,44 @@
 
     <!-- BodyStats Detail Controls -->
     <div class="form-group">
-      <label class="center-block">Weight:
-        <input class="form-control" formControlName="weight">
+      <label class="center-block">Date:
+        <input type="date" class="form-control" formControlName="date" useValueAsDate>
       </label>
     </div>
     <div class="form-group">
-      <label class="center-block">Fat%:
-        <input class="form-control" formControlName="fatPercent">
+      <label class="center-block">Weight:
+        <input type="number" class="form-control" formControlName="weight">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Fat %:
+        <input type="number"  class="form-control" formControlName="fatPercent">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Water %:
+        <input type="number"  class="form-control" formControlName="waterPercent">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Muscle %:
+        <input type="number"  class="form-control" formControlName="musclePercent">
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="center-block">Bones %:
+        <input type="number"  class="form-control" formControlName="bonesPercent">
       </label>
     </div>
     <div class="form-group">
       <label class="center-block">Calories:
-        <input class="form-control" formControlName="calories">
+        <input type="number"  class="form-control" formControlName="calories">
       </label>
     </div>
   </form>
   <p>Form value: {{ bodyForm.value | json }}</p>
   <p>Form status: {{ bodyForm.status | json }}</p>
 
-  <div>
-    <label>id: </label>{{bodyStats.id}}
-    <label>date: </label>{{bodyStats.date | date:format}}
-  </div>
-  <div>
-    <div>
-      <label>weight: </label>
-      <input [(ngModel)]="bodyStats.weight" placeholder="weight"/>
-    </div>
-    <label>fatPercent: </label>
-    <input [(ngModel)]="bodyStats.fatPercent" placeholder="fatPercent"/>
-    <label>waterPercent: </label>
-    <input [(ngModel)]="bodyStats.waterPercent" placeholder="waterPercent"/>
-    <label>musclePercent: </label>
-    <input [(ngModel)]="bodyStats.musclePercent" placeholder="musclePercent"/>
-    <label>bonesPercent: </label>
-    <input [(ngModel)]="bodyStats.bonesPercent" placeholder="bonesPercent"/>
-    <label>calories: </label>
-    <input [(ngModel)]="bodyStats.calories" placeholder="calories"/>
-  </div>
   <button (click)="goBack()">Back</button>
 </div>
 
