@@ -56,7 +56,7 @@ export class StatsDetailsComponent implements OnInit {
   private createForm() {
     this.bodyForm = this.fb.group({
       weight:     ['', Validators.required ],
-      fatPercent: ['', CustomValidators.range([5, 9]) ],
+      fatPercent: ['', CustomValidators.range([0, 100]) ],
       calories:   ['', Validators.required ],
     });
   }
