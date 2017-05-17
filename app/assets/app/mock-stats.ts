@@ -1,4 +1,4 @@
-import { BodyStats }  from './bodyStats';
+import { BodyStats } from './bodyStats';
 
 export const BODYSTATS: BodyStats[] = [
   new BodyStats(1, new Date('2016-02-04T00:00:00'), 1, 2, 3, 4, 5, 6 ),

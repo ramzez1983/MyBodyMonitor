@@ -1,5 +1,5 @@
 import { Component, OnChanges, SimpleChange} from '@angular/core';
-declare var google: any;
+declare const google: any;
 @Component({
   selector: 'chart',
 })

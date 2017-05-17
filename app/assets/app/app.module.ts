@@ -1,25 +1,25 @@
 import './rxjs-extensions';
 
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { CustomValidators } from 'ng2-validation';
 
-import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { HeroService }          from './hero.service';
-import { HeroSearchComponent }  from './hero-search.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
+import { HeroesComponent } from './heroes.component';
+import { HeroDetailComponent } from './hero-detail.component';
+import { HeroService } from './hero.service';
+import { HeroSearchComponent } from './hero-search.component';
 
-import { StatsComponent }         from './stats.component';
-import { StatsDetailsComponent }  from './stats-details.component';
-import { StatsService }           from './stats.service';
-import { BodyChartComponent }     from './bodyChart.component';
+import { StatsComponent } from './stats.component';
+import { StatsDetailsComponent } from './stats-details.component';
+import { StatsService } from './stats.service';
+import { BodyChartComponent } from './bodyChart.component';
 
 @NgModule({
   imports: [

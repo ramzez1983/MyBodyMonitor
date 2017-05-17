@@ -1,10 +1,10 @@
-import { Component, Input, OnInit }             from '@angular/core';
-import { FormBuilder, FormGroup, Validators }   from '@angular/forms';
-import { ActivatedRoute, Params }               from '@angular/router';
-import { Location }                             from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
-import { BodyStats }                            from './bodyStats';
-import { StatsService }                         from './stats.service';
+import { BodyStats } from './bodyStats';
+import { StatsService } from './stats.service';
 import { CustomValidators } from 'ng2-validation';
 
 @Component({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BodyStats }  from './bodyStats';
-import { BODYSTATS }  from './mock-stats';
+import { BodyStats } from './bodyStats';
+import { BODYSTATS } from './mock-stats';
 import { Observable } from 'rxjs/Observable';
-import { of }         from 'rxjs/observable/of';
+import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
 
 @Injectable()
