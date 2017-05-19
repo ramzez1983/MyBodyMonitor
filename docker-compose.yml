@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    image: ramzez/my-body-monitor:0.0.1
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
+    environment:
+      MONGO_DB_URI: "mongodb://db/mybody"
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - backend
+networks:
+  backend:
