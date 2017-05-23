@@ -3,6 +3,7 @@ package services
 import javax.inject.Inject
 
 import org.joda.time.DateTime
+import play.api.Logger
 import play.api.libs.json.Json
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
 import reactivemongo.play.json._
@@ -31,6 +32,7 @@ class BodyStatsService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implici
   def get(id: BSONObjectID): Future[BodyStats] = ???
 
   def create(newBodyStats: BodyStats) = {
+    Logger.info(s"Creating new body stats: $newBodyStats")
     for {
       bodyCollection <- bodyStatsFuture
       lastError <- bodyCollection.insert(newBodyStats)
