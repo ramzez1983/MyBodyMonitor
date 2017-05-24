@@ -1,6 +1,6 @@
 package services
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
 import org.joda.time.DateTime
 import play.api.Logger
@@ -23,6 +23,7 @@ object BodyStats {
 /**
   * Created by lukasz.wolanski on 07.04.2017.
   */
+@Singleton
 class BodyStatsService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implicit exec: ExecutionContext) extends MongoController with ReactiveMongoComponents {
 
   def bodyStatsFuture: Future[JSONCollection] = database.map(_.collection[JSONCollection](BodyStats.BodyStatsCollectionName))

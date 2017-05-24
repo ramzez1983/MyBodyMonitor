@@ -2,11 +2,10 @@ package controllers
 
 import javax.inject.Inject
 
-import play.api.libs.json.{JsObject, JsValue, Json, Writes}
-import play.api.mvc.{Action, Controller}
+import play.api.libs.json._
+import play.api.mvc.{Action, Controller, Result}
 import services.{BodyStats, BodyStatsService}
 
-import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 /**
@@ -15,10 +14,13 @@ import scala.concurrent.Future
 class Stats @Inject()(bodyStatsService: BodyStatsService) extends Controller {
 
   def create = Action.async(parse.json) { implicit request =>
-    (request.body \ "stats").asOpt[BodyStats]
+    (request.body).validate[BodyStats]
       .map { stats =>
         bodyStatsService
           .create(stats)
-      }.getOrElse(Future.successful(BadRequest("error")))
+      } match {
+      case result: JsSuccess[Future[Result]] => result.get
+      case e : JsError => Future.successful(BadRequest("Could not parse request: " + JsError.toJson(e).toString()))
+    }
   }
 }

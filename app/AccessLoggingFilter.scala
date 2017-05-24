@@ -1,5 +1,7 @@
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
+
 import akka.stream.Materializer
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import play.api.Logger
@@ -8,6 +10,7 @@ import play.api._
 /**
   * Created by lukasz.wolanski on 23.05.2017.
   */
+@Singleton
 class AccessLoggingFilter @Inject() (implicit val mat: Materializer) extends Filter {
 
   val accessLogger = Logger("access")
