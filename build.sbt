@@ -55,6 +55,9 @@ resolveFromWebjarsNodeModulesDir := true
 logLevel in tslint := Level.Debug
 routesGenerator := InjectedRoutesGenerator
 
+import play.sbt.routes.RoutesKeys
+RoutesKeys.routesImport += "play.modules.reactivemongo.PathBindables._"
+
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
 libraryDependencies ++= Seq(

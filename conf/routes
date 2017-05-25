@@ -16,6 +16,7 @@ DELETE  /api/heroes/:id             controllers.Heroes.delete(id:Int)
 GET     /api/body/:email            controllers.Users.findByEmail(email:String)
 POST    /api/body                   controllers.Users.create
 
+GET     /api/stats/:id              controllers.Stats.findById(id:reactivemongo.bson.BSONObjectID)
 POST    /api/stats                  controllers.Stats.create
 
 GET     /api/*notFound              controllers.Application.notFound(notFound)

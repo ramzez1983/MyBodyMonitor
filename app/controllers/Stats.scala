@@ -3,7 +3,9 @@ package controllers
 import javax.inject.Inject
 
 import play.api.libs.json._
+import play.api.libs.concurrent.Execution.Implicits._
 import play.api.mvc.{Action, Controller, Result}
+import reactivemongo.bson.BSONObjectID
 import services.{BodyStats, BodyStatsService}
 
 import scala.concurrent.Future
@@ -21,6 +23,14 @@ class Stats @Inject()(bodyStatsService: BodyStatsService) extends Controller {
       } match {
       case result: JsSuccess[Future[Result]] => result.get
       case e : JsError => Future.successful(BadRequest("Could not parse request: " + JsError.toJson(e).toString()))
+    }
+  }
+
+  def findById(id: BSONObjectID) = Action.async {
+    bodyStatsService.get(id).map { maybeStats =>
+      maybeStats.map { stats =>
+        Ok(Json.toJson(stats))
+      }.getOrElse(NotFound(s"BodyStat of given id not found: $id"))
     }
   }
 }

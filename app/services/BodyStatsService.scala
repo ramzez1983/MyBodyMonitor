@@ -4,7 +4,7 @@ import javax.inject.{Inject, Singleton}
 
 import org.joda.time.DateTime
 import play.api.Logger
-import play.api.libs.json.Json
+import play.api.libs.json.{JsObject, Json, OWrites}
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
 import reactivemongo.play.json._
 import reactivemongo.bson.BSONObjectID
@@ -30,7 +30,9 @@ class BodyStatsService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implici
 
   def findAllByUserId(id: BSONObjectID): Future[List[BodyStats]] = ???
 
-  def get(id: BSONObjectID): Future[BodyStats] = ???
+  def get(id: BSONObjectID): Future[Option[BodyStats]] = {
+    bodyStatsFuture.flatMap(_.find(Json.obj("_id" -> id)).one[BodyStats])
+  }
 
   def create(newBodyStats: BodyStats) = {
     Logger.info(s"Creating new body stats: $newBodyStats")
