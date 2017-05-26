@@ -34,6 +34,7 @@ class BodyStatsService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implici
     bodyStatsFuture.flatMap(_.find(Json.obj("_id" -> id)).one[BodyStats])
   }
 
+  //TODO change to Future[WriteResult] from Future[Result]?
   def create(newBodyStats: BodyStats) = {
     Logger.info(s"Creating new body stats: $newBodyStats")
     for {
