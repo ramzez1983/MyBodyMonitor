@@ -21,9 +21,12 @@ export class StatsService {
                      .catch(this.handleError);
   }
 
-  public getDetailedStats(id: number): Promise<BodyStats> {
-    return this.getBodyStats()
-      .then(result => result.find(h => h._id === id));
+  public getDetailedStats(id: string): Promise<BodyStats> {
+    const url = `${this.statsUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => new BodyStats(response.json() as BodyStats[]))
+      .catch(this.handleError);
   }
 
   // Fake server update; assume nothing can go wrong

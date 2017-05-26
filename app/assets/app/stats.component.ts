@@ -37,7 +37,7 @@ export class StatsComponent implements OnInit {
     this.selectedStatRow = statRow;
   }
 
-  public gotoDetail(id: number): void {
+  public gotoDetail(id: string): void {
     this.router.navigate(['/stats', id]);
   }
 }

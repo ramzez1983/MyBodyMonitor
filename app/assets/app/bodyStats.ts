@@ -13,7 +13,7 @@ export class BodyStats {
 
   public constructor(obj: any) {
     this._id = obj._id;
-    this.date = obj.date;
+    this.date = new Date(obj.date);
     this.weight = obj.weight;
     this.fatPercent = obj.fatPercent;
     this.waterPercent = obj.waterPercent;

@@ -18,7 +18,7 @@
     <td class="cellodd">{{statRow.weight}}</td>
     <td class="celleven">{{statRow.fatPercent}}</td>
     <td class="cellodd">{{statRow.calories}}</td>
-    <td><button class="delete" (click)="gotoDetail(statRow.id)">Edit</button></td>
+    <td><button class="delete" (click)="gotoDetail(statRow._id.$oid)">Edit</button></td>
   </tr>
   </tbody>
 </table>
@@ -31,6 +31,6 @@
     <span class="cellodd">{{statRow.weight}}</span>
     <span class="celleven">{{statRow.fatPercent}}</span>
     <span class="cellodd">{{statRow.calories}}</span>
-    <button class="delete" (click)="gotoDetail(statRow.id)">Edit</button>
+    <button class="delete" (click)="gotoDetail(statRow._id.$oid)">Edit</button>
   </li>
 </ul>

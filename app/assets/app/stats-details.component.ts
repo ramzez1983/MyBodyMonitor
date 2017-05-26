@@ -31,7 +31,7 @@ export class StatsDetailsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.params // tslint:disable-next-line:no-string-literal
-      .switchMap((params: Params) => this.statsService.getDetailedStats(+params['id']))
+      .switchMap((params: Params) => this.statsService.getDetailedStats(params['id']))
       .subscribe(
         (stats) => {
           this.bodyStats = stats;
