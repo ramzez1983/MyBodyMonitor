@@ -1,5 +1,6 @@
 export class BodyStats {
-  public id: number;
+// tslint:disable-next-line:variable-name
+  public _id: number;
   public date: Date;
   // TODO przerobic na mape charakterystyk?
   public weight: number;
@@ -10,22 +11,15 @@ export class BodyStats {
   public calories: number;
   [key: string]: any;
 
-  public constructor( id: number,
-                      date: Date,
-                      weight: number,
-                      fatPercent: number,
-                      waterPercent: number,
-                      musclePercent: number,
-                      bonesPercent: number,
-                      calories: number) {
-    this.id = id;
-    this.date = date;
-    this.weight = weight;
-    this.fatPercent = fatPercent;
-    this.waterPercent = waterPercent;
-    this.musclePercent = musclePercent;
-    this.bonesPercent = bonesPercent;
-    this.calories = calories;
+  public constructor(obj: any) {
+    this._id = obj._id;
+    this.date = obj.date;
+    this.weight = obj.weight;
+    this.fatPercent = obj.fatPercent;
+    this.waterPercent = obj.waterPercent;
+    this.musclePercent = obj.musclePercent;
+    this.bonesPercent = obj.bonesPercent;
+    this.calories = obj.calories;
   }
 
   public getDataForSeries(series: string[]): any[] {

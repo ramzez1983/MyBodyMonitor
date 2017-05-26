@@ -8,6 +8,9 @@ import {BodyStats} from './bodyStats';
     <div class="four wide column center aligned">
         <div id="bodychart_div" style="width: 900px; height: 500px;"></div>
     </div>
+
+      <p>Form value: {{ series | json }}</p>
+      <p>Form status: {{ stats | json }}</p>
   `,
 })
 export class BodyChartComponent extends GoogleChartComponent {

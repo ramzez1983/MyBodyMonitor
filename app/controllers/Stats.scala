@@ -33,4 +33,10 @@ class Stats @Inject()(bodyStatsService: BodyStatsService) extends Controller {
       }.getOrElse(NotFound(s"BodyStat of given id not found: $id"))
     }
   }
+
+  def all() = Action.async {
+    bodyStatsService.all.map{ result =>
+      Ok(Json.obj("stats" -> result))
+    }
+  }
 }
