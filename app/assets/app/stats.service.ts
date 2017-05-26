@@ -1,22 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Histogram }  from './histogram';
-import { WEIGHTS }    from './mock-stats';
+import { BodyStats } from './bodyStats';
+import { BODYSTATS } from './mock-stats';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class StatsService {
-  public getStats(): Promise<Histogram[]> {
-    return Promise.resolve(WEIGHTS);
+
+  private delayMs = 500;
+
+  public getBodyStats(): Promise<BodyStats[]> {
+    return Promise.resolve(BODYSTATS);
   }
 
-  public getHeroesSlowly(): Promise<Histogram[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getStats()), 2000);
-    });
+  public getDetailedStats(id: number): Promise<BodyStats> {
+    return Promise.resolve(BODYSTATS.find(h => h.id === id));
   }
 
-  public getDetailedStats(id: number): Promise<Histogram> {
-    return this.getStats()
-               .then(stats => stats.find(stat => stat.id === id));
+  // Fake server update; assume nothing can go wrong
+  public updateBodyStats(body: BodyStats): Observable<BodyStats>  {
+    const oldHero = BODYSTATS.find(h => h.id === body.id);
+    const newHero = Object.assign(oldHero, body); // Demo: mutate cached hero
+    return of(newHero).delay(this.delayMs); // simulate latency with delay
   }
 }

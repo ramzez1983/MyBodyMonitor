@@ -1,9 +1,9 @@
-import { Component, OnInit} from '@angular/core';
-declare var google: any;
+import { Component, OnChanges, SimpleChange} from '@angular/core';
+declare const google: any;
 @Component({
   selector: 'chart',
 })
-export class GoogleChartComponent implements OnInit {
+export class GoogleChartComponent implements OnChanges {
   private static googleLoaded: any;
 
   public constructor() {
@@ -13,7 +13,8 @@ export class GoogleChartComponent implements OnInit {
   public getGoogle() {
       return google;
   }
-  public ngOnInit() {
+
+  public ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
     if (!GoogleChartComponent.googleLoaded) {
       GoogleChartComponent.googleLoaded = true;
       google.charts.load('current',  {packages: ['corechart', 'bar']});

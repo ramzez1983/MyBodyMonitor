@@ -22,7 +22,8 @@
               'app': 'assets/app',
               '@@angular':'assets/lib/@@angular',
               'rxjs':'assets/lib/rxjs',
-              'symbol-observable': 'assets/lib/symbol-observable'
+              'ng2-validation':'assets/lib/ng2-validation/dist',
+              'symbol-observable':'assets/lib/symbol-observable'
 
           };
 
@@ -30,6 +31,7 @@
                   'app': {main: 'main.js', defaultExtension: 'js'},
                   'rxjs': {defaultExtension: 'js'},
                   'assets/lib': {defaultExtension: 'js'},
+                  'ng2-validation': {defaultExtension: 'js', main: 'index.js'},
                   'symbol-observable': {defaultExtension: 'js', main: 'index.js'}
               };
           var ngPackageNames = [

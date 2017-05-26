@@ -1,30 +1,30 @@
 import './rxjs-extensions';
 
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { HeroService }          from './hero.service';
-import { HeroSearchComponent }  from './hero-search.component';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
+import { HeroesComponent } from './heroes.component';
+import { HeroDetailComponent } from './hero-detail.component';
+import { HeroService } from './hero.service';
+import { HeroSearchComponent } from './hero-search.component';
 
-import { HistogramComponent }   from './histogram.component';
-
-import { StatsDetailsComponent }  from './stats-details.component';
-import { StatsService }           from './stats.service';
-
-import { ExampleComponent }   from './example.component';
+import { StatsComponent } from './stats.component';
+import { StatsDetailsComponent } from './stats-details.component';
+import { StatsService } from './stats.service';
+import { BodyChartComponent } from './bodyChart.component';
+import { DateValueAccessor } from './date-value-accessor';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
   ],
@@ -34,9 +34,10 @@ import { ExampleComponent }   from './example.component';
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
-    HistogramComponent,
+    StatsComponent,
     StatsDetailsComponent,
-    ExampleComponent,
+    BodyChartComponent,
+    DateValueAccessor,
   ],
   providers: [
     HeroService,
