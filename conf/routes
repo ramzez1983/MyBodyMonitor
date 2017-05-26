@@ -19,6 +19,7 @@ POST    /api/body                   controllers.Users.create
 GET     /api/stats                  controllers.Stats.all
 GET     /api/stats/:id              controllers.Stats.findById(id:reactivemongo.bson.BSONObjectID)
 POST    /api/stats                  controllers.Stats.create
+PUT     /api/stats/:id              controllers.Stats.update(id:reactivemongo.bson.BSONObjectID)
 
 GET     /api/*notFound              controllers.Application.notFound(notFound)
 

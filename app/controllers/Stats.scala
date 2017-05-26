@@ -26,6 +26,10 @@ class Stats @Inject()(bodyStatsService: BodyStatsService) extends Controller {
     }
   }
 
+  def update(id: BSONObjectID) = Action.async(parse.json) { implicit request =>
+    Future.successful(NotImplemented("Not yet implemented"))
+  }
+
   def findById(id: BSONObjectID) = Action.async {
     bodyStatsService.get(id).map { maybeStats =>
       maybeStats.map { stats =>

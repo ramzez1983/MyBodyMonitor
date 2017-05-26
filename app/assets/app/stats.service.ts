@@ -29,6 +29,14 @@ export class StatsService {
       .catch(this.handleError);
   }
 
+  public createBodyStats(bodyStats: BodyStats): Promise<BodyStats> {
+    return this.http
+      .post(this.statsUrl, JSON.stringify(bodyStats), {headers: this.headers})
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
   // Fake server update; assume nothing can go wrong
   public updateBodyStats(body: BodyStats): Observable<BodyStats>  {
     const oldHero = this.getDetailedStats(body._id);
