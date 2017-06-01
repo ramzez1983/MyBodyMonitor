@@ -27,7 +27,17 @@ class Stats @Inject()(bodyStatsService: BodyStatsService) extends Controller {
   }
 
   def update(id: BSONObjectID) = Action.async(parse.json) { implicit request =>
-    Future.successful(NotImplemented("Not yet implemented"))
+    (request.body).validate[BodyStats]
+      .map { stats =>
+        bodyStatsService
+          .update(id, stats)
+            .map { result =>
+              Ok(s"update completed: $result")
+        }.recover { case _ => InternalServerError }
+      } match {
+      case result: JsSuccess[Future[Result]] => result.get
+      case e: JsError => Future.successful(BadRequest("Could not parse request: " + JsError.toJson(e).toString()))
+    }
   }
 
   def findById(id: BSONObjectID) = Action.async {

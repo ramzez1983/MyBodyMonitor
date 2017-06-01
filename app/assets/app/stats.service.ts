@@ -4,6 +4,7 @@ import { BodyStats } from './bodyStats';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class StatsService {
@@ -38,14 +39,19 @@ export class StatsService {
   }
 
   // Fake server update; assume nothing can go wrong
-  public updateBodyStats(body: BodyStats): Observable<BodyStats>  {
-    const oldHero = this.getDetailedStats(body._id);
-    const newHero = Object.assign(oldHero, body); // Demo: mutate cached hero
-    return of(newHero).delay(this.delayMs); // simulate latency with delay
+  public updateBodyStats(body: BodyStats): Promise<BodyStats>  {
+    const id = body._id.$oid;
+    const url = `${this.statsUrl}/${id}`;
+    console.error('UpdateBodyStats id: %s, url: %s', id, url);
+    return this.http
+      .put(url, JSON.stringify(body), {headers: this.headers})
+                .toPromise()
+                .then(() => body)
+                .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
-//    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }

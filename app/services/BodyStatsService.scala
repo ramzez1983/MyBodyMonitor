@@ -6,6 +6,7 @@ import org.joda.time.DateTime
 import play.api.Logger
 import play.api.libs.json.{JsObject, Json, OWrites}
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
+import reactivemongo.api.commands.UpdateWriteResult
 import reactivemongo.play.json._
 import reactivemongo.bson.BSONObjectID
 import reactivemongo.play.json.collection.JSONCollection
@@ -56,7 +57,9 @@ class BodyStatsService @Inject()(val reactiveMongoApi: ReactiveMongoApi)(implici
       Ok("Mongo LastError: %s".format(lastError))
   }
 
-  def update(bodyStats: BodyStats) = ???
+  def update(id: BSONObjectID, bodyStats: BodyStats) = {
+    bodyStatsFuture.flatMap(_.update(Json.obj("_id" -> id),Json.obj("$set" -> Json.toJson(bodyStats))))
+  }
 
   def delete(id: BSONObjectID) = ???
 }

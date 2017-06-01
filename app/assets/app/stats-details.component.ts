@@ -40,9 +40,10 @@ export class StatsDetailsComponent implements OnInit {
   }
 
   public onSubmit() {
+    console.error('onSubmit');
     this.bodyStats = this.prepareSaveBody();
-    this.statsService.updateBodyStats(this.bodyStats).subscribe(/* error handling */);
-    this.ngOnInit();
+    console.error('prepareSaveBody', this.bodyStats);
+    this.statsService.updateBodyStats(this.bodyStats).then(() => this.goBack());
   }
 
   public revert() {
@@ -50,6 +51,7 @@ export class StatsDetailsComponent implements OnInit {
   }
 
   public goBack(): void {
+    console.error('goBack');
     this.location.back();
   }
 
@@ -79,15 +81,15 @@ export class StatsDetailsComponent implements OnInit {
 
   private prepareSaveBody(): BodyStats {
     const formModel = this.bodyForm.value;
-    const saveBody = new BodyStats(
-      this.bodyStats.id,
-      new Date(formModel.date),
-      formModel.weight,
-      formModel.fatPercent,
-      formModel.waterPercent,
-      formModel.musclePercent,
-      formModel.bonesPercent,
-      formModel.calories,
+    const saveBody = new BodyStats({
+      _id : this.bodyStats._id,
+      date : formModel.date,
+      weight : formModel.weight,
+      fatPercent : formModel.fatPercent,
+      waterPercent : formModel.waterPercent,
+      musclePercent : formModel.musclePercent,
+      bonesPercent : formModel.bonesPercent,
+      calories : formModel.calories},
     );
     return saveBody;
   }
