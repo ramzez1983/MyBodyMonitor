@@ -43,7 +43,7 @@ export class StatsDetailsComponent implements OnInit {
     console.error('onSubmit');
     this.bodyStats = this.prepareSaveBody();
     console.error('prepareSaveBody', this.bodyStats);
-    this.statsService.updateBodyStats(this.bodyStats).then(() => this.goBack());
+    this.statsService.updateBodyStats(this.bodyStats).then(() => this.ngOnInit());
   }
 
   public revert() {

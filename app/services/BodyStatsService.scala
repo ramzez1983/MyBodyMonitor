@@ -4,9 +4,8 @@ import javax.inject.{Inject, Singleton}
 
 import org.joda.time.DateTime
 import play.api.Logger
-import play.api.libs.json.{JsObject, Json, OWrites}
+import play.api.libs.json.{Format, Json, Writes, Reads}
 import play.modules.reactivemongo.{MongoController, ReactiveMongoApi, ReactiveMongoComponents}
-import reactivemongo.api.commands.UpdateWriteResult
 import reactivemongo.play.json._
 import reactivemongo.bson.BSONObjectID
 import reactivemongo.play.json.collection.JSONCollection
@@ -25,6 +24,8 @@ case class BodyStats(_id: Option[BSONObjectID],
 
 object BodyStats {
   val BodyStatsCollectionName = "bodyStats"
+  val pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+  implicit val dateFormat = Format[DateTime](Reads.jodaDateReads(pattern), Writes.jodaDateWrites(pattern))
   implicit val format = Json.format[BodyStats]
 }
 
