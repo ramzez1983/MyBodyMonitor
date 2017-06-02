@@ -66,10 +66,10 @@ libraryDependencies ++= Seq(
 )
 
 // Docker settings
+enablePlugins(DockerComposePlugin)
+dockerImageCreationTask := (publishLocal in Docker).value 
 dockerBaseImage := "openjdk:8"
-
 dockerExposedPorts := Seq(9000, 9443)
-
 dockerExposedVolumes := Seq("/opt/docker/logs")
-
 dockerRepository := Some("ramzez")
+
